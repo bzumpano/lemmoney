@@ -50,6 +50,8 @@ end
 group :test do
   gem 'shoulda-matchers', '~> 4.0'
   gem 'rails-controller-testing'
+  gem 'guard-rspec', require: false
+  gem 'terminal-notifier-guard', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
