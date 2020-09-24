@@ -27,7 +27,7 @@ RSpec.describe OffersController, type: :controller do
     end
 
     context 'pagination' do
-      let(:per_page) { 3 }
+      let(:per_page) { 4 }
 
       context 'default page' do
         before do
