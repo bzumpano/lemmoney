@@ -1,0 +1,32 @@
+pt-BR:
+  admin:
+    offers:
+      index:
+        title: Ofertas
+        commands:
+          new: Nova oferta
+
+      new:
+        title: Nova oferta
+        commands:
+          save: Enviar
+          cancel: Cancelar
+
+      create:
+        done: Oferta criada com sucesso
+        error: Erro criar oferta
+
+
+      edit:
+        title: Editar oferta
+        commands:
+          save: Enviar
+          cancel: Cancelar
+
+      update:
+        done: Oferta atualizada com sucesso
+        error: Erro atualizar oferta
+
+      destroy:
+        done: Oferta removida com sucesso
+        error: Erro remover oferta
