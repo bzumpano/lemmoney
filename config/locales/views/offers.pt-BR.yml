@@ -2,6 +2,10 @@ pt-BR:
   offers:
     index:
       title: Ofertas
+
+    offer:
       premium: Premium
+      ends_at: Oferta termina em
+      expired: Expirado
       commands:
         shop_now: Comprar agora

@@ -5,8 +5,11 @@
     %title Lemmoney
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all'
-    = javascript_include_tag 'application'
+    = stylesheet_link_tag 'application', media: 'all'
+    = yield(:stylesheet)
   %body
     .mt-4
       = yield
+
+    = javascript_include_tag(:application)
+    = yield(:javascript)

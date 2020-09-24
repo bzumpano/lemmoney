@@ -5,8 +5,9 @@
     %title= t('app.title')
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'admin', media: 'all'
-    = javascript_include_tag 'admin'
+
+    = stylesheet_link_tag 'admin', media: 'all'
+    = yield(:stylesheet)
 
   %body
     .container.mt-3
@@ -24,3 +25,7 @@
 
 
       = yield
+
+    = javascript_include_tag(:admin)
+    = yield(:javascript)
+

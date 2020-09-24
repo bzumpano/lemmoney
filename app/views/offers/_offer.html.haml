@@ -1,0 +1,15 @@
+.col.mb-4{ data: { container: :offer } }
+  .card.h-100
+    .card-body
+      %span.badge.badge-pill.badge-danger.badge-premium= t('.premium') if offer.premium?
+      .card-title.h3.text-center
+        = offer.advertiser_name
+
+      .card-text
+        = offer.description
+        - btn_color = offer.premium? ? 'btn-success' : 'btn-secondary'
+        = link_to t('.commands.shop_now'), offer.url, class: "btn btn-lg btn-block #{btn_color} mt-3"
+
+
+      - if offer.ends_at.present?
+        .float-right.text-muted.small{ data: { container: :countdown, ends_at: offer.ends_at, ends_at_label: t('.ends_at'), expired_label: t('.expired') } }
