@@ -1,0 +1,12 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+
+  .container-fluid
+    = link_to t('app.title'), root_path, class: 'navbar-brand'
+
+    %button.navbar-toggler{ data: { toggle: "collapse", target: "#navbar-toggleable" } }
+      %span.navbar-toggler-icon
+
+    #navbar-toggleable.collapse.navbar-collapse
+      %ul.navbar-nav.mr-auto
+        %li.nav-item
+          = link_to t('.admin'), admin_offers_path, class: "nav-link"

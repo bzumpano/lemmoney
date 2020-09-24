@@ -1,0 +1,6 @@
+pt-BR:
+  admin:
+    navbar:
+      offers: Ofertas ativas
+      hello: 'Olá, %{user}!'
+      logout: Sair
