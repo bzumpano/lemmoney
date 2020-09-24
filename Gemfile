@@ -35,6 +35,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem "validate_url"
+gem 'bootstrap', '~> 4.5.2'
+gem 'jquery-rails'
+gem 'simple_form'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
