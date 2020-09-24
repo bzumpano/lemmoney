@@ -7,6 +7,7 @@ class CreateOffers < ActiveRecord::Migration[5.2]
       t.datetime :starts_at
       t.datetime :ends_at
       t.boolean :premium
+      t.integer :status, default: 0
 
       t.timestamps
     end
