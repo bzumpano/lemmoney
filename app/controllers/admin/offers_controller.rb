@@ -60,7 +60,7 @@ class Admin::OffersController < AdminController
   private
 
   def offers
-    @offers ||= Offer.all
+    @offers ||= Offer.all.page(params[:page])
   end
 
   def offer

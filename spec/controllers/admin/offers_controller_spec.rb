@@ -22,6 +22,31 @@ RSpec.describe Admin::OffersController, type: :controller do
         it { expect(view_context.offers).to match_array(offers) }
       end
     end
+
+    context 'pagination' do
+      let(:per_page) { 3 }
+
+      context 'default page' do
+        before do
+          create_list(:offer, per_page + 1)
+
+          get(:index)
+        end
+
+        it { expect(controller.view_context.offers.count).to eq(per_page) }
+      end
+
+
+      context 'with page param' do
+        before do
+          create_list(:offer, per_page + 1)
+
+          get(:index, params: { page: 2 })
+        end
+
+        it { expect(controller.view_context.offers.count).to eq(1) }
+      end
+    end
   end
 
   describe 'GET #new' do
