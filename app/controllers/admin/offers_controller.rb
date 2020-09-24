@@ -1,4 +1,4 @@
-class Admin::OffersController < ApplicationController
+class Admin::OffersController < AdminController
 
   PERMITTED_PARAMS = %i[
     advertiser_name
@@ -24,7 +24,7 @@ class Admin::OffersController < ApplicationController
 
   def create
     if offer.save
-      flash.now[:notice] = t('.done')
+      flash[:notice] = t('.done')
       redirect_to admin_offers_path
     else
       flash.now[:alert] = t('.error')
@@ -39,7 +39,7 @@ class Admin::OffersController < ApplicationController
     offer.assign_attributes(resource_params) if resource_params.present?
 
     if offer.save
-      flash.now[:notice] = t('.done')
+      flash[:notice] = t('.done')
       redirect_to admin_offers_path
     else
       flash.now[:alert] = t('.error')
@@ -49,10 +49,10 @@ class Admin::OffersController < ApplicationController
 
   def destroy
     if offer.destroy
-      flash.now[:notice] = t('.done')
+      flash[:notice] = t('.done')
       redirect_to admin_offers_path
     else
-      flash.now[:notice] = t('.error')
+      flash[:notice] = t('.error')
       redirect_to admin_offers_path
     end
   end

@@ -3,11 +3,18 @@ pt-BR:
     offers:
       index:
         title: Ofertas
+        actions: Ações
         commands:
           new: Nova oferta
+          edit: Editar
+          destroy: Remover
+          disable: Desabilitar
+          enable: Habilitar
 
       new:
         title: Nova oferta
+
+      form:
         commands:
           save: Enviar
           cancel: Cancelar
@@ -19,9 +26,6 @@ pt-BR:
 
       edit:
         title: Editar oferta
-        commands:
-          save: Enviar
-          cancel: Cancelar
 
       update:
         done: Oferta atualizada com sucesso

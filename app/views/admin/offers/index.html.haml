@@ -1,2 +1,30 @@
-%h1 Admin::Offers#index
-%p Find me in app/views/admin/offers/index.html.haml
+.row.justify-content-center
+  .col-12.col-md-9
+
+    .card
+      .card-header
+        .row
+          .col-12.col-md-9
+            %h2.h4.card-title.mb-0= t('.title')
+          .col-12.col-md-3
+            = link_to t('.commands.new'), new_admin_offer_path, class: 'btn btn-success float-right'
+
+      .card-body
+        .card-text
+          %table.table
+            %thead
+              %tr
+                - %i[id advertiser_name url status].each do |field_name|
+                  %th= Offer.human_attribute_name(field_name)
+                %th= t('.actions')
+
+            %tbody
+              - offers.each do |offer|
+                %tr
+                  %td= offer.id
+                  %td= offer.advertiser_name
+                  %td= offer.url
+                  %td= I18n.t("activerecord.attributes.offer.statuses.#{offer.status}")
+                  %td
+                    = link_to t('.commands.edit'), edit_admin_offer_path(offer), class: 'btn btn-link text-primary'
+                    = link_to t('.commands.destroy'), admin_offer_path(offer), method: :delete, data: { confirm: t('commands.remove_confirm') }, class: 'btn btn-link text-danger'

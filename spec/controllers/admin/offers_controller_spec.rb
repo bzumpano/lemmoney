@@ -87,7 +87,7 @@ RSpec.describe Admin::OffersController, type: :controller do
         before { post(:create, params: valid_params) }
 
         it { expect(response).to redirect_to(admin_offers_path) }
-        it { expect(controller).to set_flash.now.to(expected_flash) }
+        it { expect(controller).to set_flash.to(expected_flash) }
       end
     end
 
@@ -182,7 +182,7 @@ RSpec.describe Admin::OffersController, type: :controller do
         before { patch(:update, params: valid_params) }
 
         it { expect(response).to redirect_to(admin_offers_path) }
-        it { expect(controller).to set_flash.now.to(expected_flash) }
+        it { expect(controller).to set_flash.to(expected_flash) }
       end
     end
 
@@ -237,7 +237,7 @@ RSpec.describe Admin::OffersController, type: :controller do
 
         before { delete(:destroy, params: { id: offer }) }
 
-        it { expect(controller).to set_flash.now.to(expected_flash) }
+        it { expect(controller).to set_flash.to(expected_flash) }
       end
     end
 
@@ -265,7 +265,7 @@ RSpec.describe Admin::OffersController, type: :controller do
 
         before { delete(:destroy, params: { id: offer }) }
 
-        it { expect(controller).to set_flash.now.to(expected_flash) }
+        it { expect(controller).to set_flash.to(expected_flash) }
       end
     end
   end

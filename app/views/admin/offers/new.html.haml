@@ -1,2 +1,10 @@
-%h1 Admin::Offers#new
-%p Find me in app/views/admin/offers/new.html.haml
+.row.justify-content-center
+  .col-12.col-md-9
+
+    .card
+      .card-header
+        %h2.h4.card-title.mb-0= t('.title')
+
+      .card-body
+        .card-text
+          = render 'form', offer: offer

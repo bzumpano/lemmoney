@@ -1,0 +1,30 @@
+= simple_form_for [:admin, offer] do |f|
+  .row
+    .col-12
+      = f.input :advertiser_name
+
+  .row
+    .col-12
+      = f.input :url
+
+  .row
+    .col-12
+      = f.input :description
+
+  .row
+    .col-12
+      = f.input :starts_at
+
+  .row
+    .col-12
+      = f.input :ends_at
+
+  .row
+    .col-12
+      = f.input :premium
+
+  .row.mt-3
+    .col-12.col-md-6
+      = link_to t('.commands.cancel'), admin_offers_path, class: 'btn btn-warning float-left'
+    .col-12.col-md-6
+      = f.submit t('.commands.save'), class: 'btn btn-primary float-right'
