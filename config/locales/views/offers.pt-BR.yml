@@ -1,0 +1,7 @@
+pt-BR:
+  offers:
+    index:
+      title: Ofertas
+      premium: Premium
+      commands:
+        shop_now: Comprar agora

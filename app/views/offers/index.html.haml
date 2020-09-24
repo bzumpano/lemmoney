@@ -1,0 +1,26 @@
+- content_for :stylesheet, stylesheet_link_tag('views/offers/index')
+
+.row.justify-content-center
+  .col-11
+
+    .row
+      .col-12
+        %h2.text-center= t('.title')
+
+    .row.row-cols-1.row-cols-lg-2.mt-4
+      - offers.each do |offer|
+        .col.mb-4
+          .card.h-100
+            .card-body
+              %span.badge.badge-pill.badge-danger.badge-premium= t('.premium') if offer.premium?
+              .card-title.h3.text-center
+                = offer.advertiser_name
+
+              .card-text
+                = offer.description
+                - btn_color = offer.premium? ? 'btn-success' : 'btn-secondary'
+                = link_to t('.commands.shop_now'), offer.url, class: "btn btn-lg btn-block #{btn_color} mt-3"
+
+    .row
+      .col-12.mt-4
+        = paginate offers
