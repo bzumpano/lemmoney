@@ -1,0 +1,20 @@
+pt-BR:
+  activerecord:
+    attributes:
+      offer:
+        id: ID
+        advertiser_name: Nome do anunciante
+        url: Url
+        description: Descrição
+        starts_at: Data de início
+        ends_at: Data final
+        premium: Premium
+        status: Status
+        statuses:
+          disabled: Desabilitado
+          enabled: Habilitado
+
+    errors:
+      models:
+        offer:
+          attributes:

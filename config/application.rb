@@ -30,5 +30,10 @@ module Lemmoney
     config.encoding = 'utf-8'
     config.i18n.default_locale = 'pt-BR'
     config.time_zone = 'Brasilia'
+
+    # Carrega os locales separados em vários arquivos
+    config.i18n.load_path += Dir[
+      Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s
+    ]
   end
 end
