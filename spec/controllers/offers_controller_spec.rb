@@ -17,12 +17,26 @@ RSpec.describe OffersController, type: :controller do
       let(:view_context) { controller.view_context }
 
       context 'offers' do
-        let!(:regular_offer) { create(:offer, :enabled, premium: false) }
-        let!(:premium_offer) { create(:offer, :enabled, premium: true) }
+        let!(:regular_offers) do
+          [
+            create(:offer, :enabled, premium: false, starts_at: 1.day.ago, ends_at: 1.day.since),
+            create(:offer, :enabled, premium: false, starts_at: 1.day.ago, ends_at: nil),
+          ]
+        end
+        let!(:premium_offer) { create(:offer, :enabled, premium: true, starts_at: 1.day.ago, ends_at: nil) }
 
-        before { create(:offer, status: :disabled) }
+        let(:expected) do
+          [premium_offer] + regular_offers
+        end
 
-        it { expect(view_context.offers).to eq([premium_offer, regular_offer]) }
+        before do
+          # offers that should not appear
+          create(:offer, status: :disabled)
+          create(:offer, :enabled, starts_at: 1.day.since, ends_at: 1.day.ago)
+          create(:offer, :enabled, starts_at: 2.day.since, ends_at: 1.day.ago)
+        end
+
+        it { expect(view_context.offers).to eq(expected) }
       end
     end
 
