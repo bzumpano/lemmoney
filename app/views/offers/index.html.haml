@@ -11,6 +11,11 @@
     .row.row-cols-1.row-cols-lg-2.mt-4
       = render offers
 
+    - if offers.blank?
+      .row
+        .col-12.mt-4.text-center
+          %p.text-muted.h4= t('.blank')
+
     .row
       .col-12.mt-4
         = paginate offers

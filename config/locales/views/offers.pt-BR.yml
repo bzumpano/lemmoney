@@ -2,6 +2,7 @@ pt-BR:
   offers:
     index:
       title: Ofertas
+      blank: Nenhuma oferta encontada
 
     offer:
       premium: Premium
