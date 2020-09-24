@@ -60,10 +60,22 @@ class Admin::OffersController < AdminController
   def show
   end
 
+  def enable
+    offer.enabled!
+    flash[:notice] = t('.done')
+    redirect_to admin_offers_path
+  end
+
+  def disable
+    offer.disabled!
+    flash[:notice] = t('.done')
+    redirect_to admin_offers_path
+  end
+
   private
 
   def offers
-    @offers ||= Offer.all.page(params[:page])
+    @offers ||= Offer.order(:id).page(params[:page])
   end
 
   def offer
@@ -75,6 +87,6 @@ class Admin::OffersController < AdminController
   end
 
   def find_action?
-    %w[edit update destroy show].include?(action_name)
+    %w[edit update destroy show enable disable].include?(action_name)
   end
 end

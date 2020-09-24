@@ -38,3 +38,9 @@ pt-BR:
       show:
         commands:
           back: Voltar
+
+      enable:
+        done: Oferta ativada com sucesso
+
+      disable:
+        done: Oferta desativada com sucesso

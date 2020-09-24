@@ -1,5 +1,5 @@
 .row.justify-content-center
-  .col-12.col-lg-10
+  .col-12.col-lg-11
 
     .card
       .card-header
@@ -11,7 +11,7 @@
 
       .card-body
         .card-text
-          %table.table
+          %table.table.table-sm.table-hover
             %thead
               %tr
                 - %i[id advertiser_name url status].each do |field_name|
@@ -28,7 +28,15 @@
                   %td= link_to offer.url, show_path, class: 'btn btn-link text-muted'
                   %td= link_to I18n.t("activerecord.attributes.offer.statuses.#{offer.status}"), show_path, class: 'btn btn-link text-muted'
                   %td
+
                     = link_to t('.commands.edit'), edit_admin_offer_path(offer), class: 'btn btn-sm btn-link text-primary'
+
+                    - if offer.enabled?
+                      = link_to t('.commands.disable'), disable_admin_offer_path(offer), method: :patch, class: 'btn btn-sm btn-link text-primary'
+
+                    - if offer.disabled?
+                      = link_to t('.commands.enable'), enable_admin_offer_path(offer), method: :patch, class: 'btn btn-sm btn-link text-primary'
+
                     = link_to t('.commands.destroy'), admin_offer_path(offer), method: :delete, data: { confirm: t('commands.remove_confirm') }, class: 'btn btn-sm btn-link text-danger'
 
           = paginate offers

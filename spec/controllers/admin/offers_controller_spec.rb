@@ -272,6 +272,92 @@ RSpec.describe Admin::OffersController, type: :controller do
     end
   end
 
+  describe 'PATCH #enable' do
+    let(:offer) { create(:offer, status: :disabled) }
+
+    let(:valid_params) do
+      { id: offer }
+    end
+
+    describe 'unauthorized' do
+      before { patch(:enable, params: valid_params) }
+
+      it { is_expected.to redirect_to(new_user_session_path) }
+    end
+
+    describe 'authorized' do
+      before { sign_in(user) }
+
+      describe 'helper methods' do
+        let(:view_context) { controller.view_context }
+
+        before { patch(:enable, params: valid_params) }
+
+        context 'offer' do
+          it { expect(view_context.offer).to eq(offer) }
+        end
+      end
+
+      context 'saves' do
+        before { patch(:enable, params: valid_params) }
+
+        it { expect(offer.reload).to be_enabled }
+      end
+
+      context 'redirect to index' do
+        let(:expected_flash) { I18n.t('admin.offers.enable.done') }
+
+        before { patch(:enable, params: valid_params) }
+
+        it { expect(response).to redirect_to(admin_offers_path) }
+        it { expect(controller).to set_flash.to(expected_flash) }
+      end
+    end
+  end
+
+  fdescribe 'PATCH #disable' do
+    let(:offer) { create(:offer, status: :enabled) }
+
+    let(:valid_params) do
+      { id: offer }
+    end
+
+    describe 'unauthorized' do
+      before { patch(:disable, params: valid_params) }
+
+      it { is_expected.to redirect_to(new_user_session_path) }
+    end
+
+    describe 'authorized' do
+      before { sign_in(user) }
+
+      describe 'helper methods' do
+        let(:view_context) { controller.view_context }
+
+        before { patch(:disable, params: valid_params) }
+
+        context 'offer' do
+          it { expect(view_context.offer).to eq(offer) }
+        end
+      end
+
+      context 'saves' do
+        before { patch(:disable, params: valid_params) }
+
+        it { expect(offer.reload).to be_disabled }
+      end
+
+      context 'redirect to index' do
+        let(:expected_flash) { I18n.t('admin.offers.disable.done') }
+
+        before { patch(:disable, params: valid_params) }
+
+        it { expect(response).to redirect_to(admin_offers_path) }
+        it { expect(controller).to set_flash.to(expected_flash) }
+      end
+    end
+  end
+
   describe 'DELETE #destroy' do
     let(:offer) { create(:offer) }
 
