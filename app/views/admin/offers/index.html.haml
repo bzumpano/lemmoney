@@ -1,5 +1,5 @@
 .row.justify-content-center
-  .col-12.col-md-9
+  .col-12.col-md-10
 
     .card
       .card-header
@@ -20,13 +20,15 @@
 
             %tbody
               - offers.each do |offer|
+                - show_path = admin_offer_path(offer)
+
                 %tr
-                  %td= offer.id
-                  %td= offer.advertiser_name
-                  %td= offer.url
-                  %td= I18n.t("activerecord.attributes.offer.statuses.#{offer.status}")
+                  %td= link_to offer.id, show_path, class: 'btn btn-link text-muted'
+                  %td= link_to offer.advertiser_name, show_path, class: 'btn btn-link text-muted'
+                  %td= link_to offer.url, show_path, class: 'btn btn-link text-muted'
+                  %td= link_to I18n.t("activerecord.attributes.offer.statuses.#{offer.status}"), show_path, class: 'btn btn-link text-muted'
                   %td
-                    = link_to t('.commands.edit'), edit_admin_offer_path(offer), class: 'btn btn-link text-primary'
-                    = link_to t('.commands.destroy'), admin_offer_path(offer), method: :delete, data: { confirm: t('commands.remove_confirm') }, class: 'btn btn-link text-danger'
+                    = link_to t('.commands.edit'), edit_admin_offer_path(offer), class: 'btn btn-sm btn-link text-primary'
+                    = link_to t('.commands.destroy'), admin_offer_path(offer), method: :delete, data: { confirm: t('commands.remove_confirm') }, class: 'btn btn-sm btn-link text-danger'
 
           = paginate offers

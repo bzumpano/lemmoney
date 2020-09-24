@@ -111,3 +111,6 @@ pt-BR:
     precision:
       format:
         delimiter: .
+  boolean:
+    "true": Sim
+    "false": Não

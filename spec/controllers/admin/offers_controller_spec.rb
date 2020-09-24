@@ -294,4 +294,26 @@ RSpec.describe Admin::OffersController, type: :controller do
       end
     end
   end
+
+  describe 'GET #show' do
+    let(:offer) { create(:offer) }
+
+    before { get(:show, params: { id: offer }) }
+
+    context 'template' do
+      render_views
+
+      it { is_expected.to respond_with(:success) }
+      it { is_expected.to render_template(:show) }
+    end
+
+    describe 'helper methods' do
+      let(:view_context) { controller.view_context }
+
+      context 'offer' do
+        it { expect(view_context.offer).to eq(offer) }
+      end
+    end
+  end
+
 end

@@ -57,6 +57,9 @@ class Admin::OffersController < AdminController
     end
   end
 
+  def show
+  end
+
   private
 
   def offers
@@ -72,6 +75,6 @@ class Admin::OffersController < AdminController
   end
 
   def find_action?
-    %w[edit update destroy].include?(action_name)
+    %w[edit update destroy show].include?(action_name)
   end
 end

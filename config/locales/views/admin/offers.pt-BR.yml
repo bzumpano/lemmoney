@@ -34,3 +34,7 @@ pt-BR:
       destroy:
         done: Oferta removida com sucesso
         error: Erro remover oferta
+
+      show:
+        commands:
+          back: Voltar
